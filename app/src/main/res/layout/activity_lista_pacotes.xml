@@ -45,7 +45,8 @@
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <ListView
+    <ListView android:id="@+id/lista_pacotes_listview"
+        tools:listitem="@layout/item_pacote"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
