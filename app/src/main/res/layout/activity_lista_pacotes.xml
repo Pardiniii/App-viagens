@@ -8,9 +8,10 @@
     tools:context=".ui.activity.ListaPacotesActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/lista_pacotes_banner_inicial"
         android:layout_width="0dp"
         android:layout_height="120dp"
+        android:contentDescription="Banner inicial dos pacotes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,39 +21,42 @@
         app:tint="@color/purple_500" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/lista_pacotes_especiais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:text="Especiais"
         android:textColor="@color/white"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/lista_pacotes_banner_inicial"
+        app:layout_constraintEnd_toEndOf="@id/lista_pacotes_banner_inicial"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/lista_pacotes_banner_inicial"
+        app:layout_constraintTop_toTopOf="@id/lista_pacotes_banner_inicial"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/lista_pacotes_pais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Brasil"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/lista_pacotes_especiais"
+        app:layout_constraintTop_toBottomOf="@+id/lista_pacotes_especiais" />
 
-    <ListView android:id="@+id/lista_pacotes_listview"
-        tools:listitem="@layout/item_pacote"
+    <ListView
+        android:id="@+id/lista_pacotes_listview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lista_pacotes_banner_inicial"
+        tools:listitem="@layout/item_pacote" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
