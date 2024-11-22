@@ -27,7 +27,7 @@ public class ListaPacotesActivity extends AppCompatActivity {
 
         ConfiguraLista();
 
-        Intent intent = new Intent(this, ResumoPacoteActivity.class);
+        Intent intent = new Intent(this, PagamentoActivity .class);
         startActivity(intent);
 
     }

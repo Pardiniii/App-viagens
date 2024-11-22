@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activity.ResumoPacoteActivity">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/resumo_pacote_imagem"
@@ -17,14 +16,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/sao_paulo_sp" />
+        android:contentDescription="Imagem do pacote"
+        tools:srcCompat="@drawable/sao_paulo_sp" />
 
     <TextView
         android:id="@+id/resumo_pacote_local"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
         android:text="TextView"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -59,6 +58,7 @@
         android:id="@+id/resumo_pacote_preco"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         android:layout_marginEnd="8dp"
         android:text="TextView"
         android:textAlignment="textEnd"
@@ -82,8 +82,7 @@
         android:id="@+id/resumo_pacote_botao_realiza_pagamento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_margin="8dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:text="Realizar pagamento"
         app:layout_constraintBottom_toBottomOf="parent"
