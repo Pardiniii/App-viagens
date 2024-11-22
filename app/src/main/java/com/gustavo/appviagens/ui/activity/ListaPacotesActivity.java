@@ -1,5 +1,6 @@
 package com.gustavo.appviagens.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -25,6 +26,9 @@ public class ListaPacotesActivity extends AppCompatActivity {
         setTitle(TUTULO_APP_BAR);
 
         ConfiguraLista();
+
+        Intent intent = new Intent(this, ResumoPacoteActivity.class);
+        startActivity(intent);
 
     }
 
