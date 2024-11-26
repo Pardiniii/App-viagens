@@ -3,6 +3,7 @@ package com.gustavo.appviagens.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,14 +28,18 @@ public class ListaPacotesActivity extends AppCompatActivity {
 
         ConfiguraLista();
 
-        Intent intent = new Intent(this, ResumoCompraActivity.class);
-        startActivity(intent);
-
     }
 
     private void ConfiguraLista() {
         ListView listaDePacotes = findViewById(R.id.lista_pacotes_listview);
         List<Pacote> pacotes = new PacoteDAO().lista();
         listaDePacotes.setAdapter(new ListaPacotesAdapter(pacotes, this));
+        listaDePacotes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(ListaPacotesActivity.this, ResumoPacoteActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -1,8 +1,10 @@
 package com.gustavo.appviagens.ui.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +45,15 @@ public class ResumoPacoteActivity extends AppCompatActivity {
         mostraDias(pacote);
         mostraPreco(pacote);
         mostraData(pacote);
+
+        Button botaoRealizaPagamento = findViewById(R.id.resumo_pacote_botao_realiza_pagamento);
+        botaoRealizaPagamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (ResumoPacoteActivity.this, PagamentoActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
