@@ -1,5 +1,7 @@
 package com.gustavo.appviagens.ui.activity;
 
+import static com.gustavo.appviagens.ui.activity.PacoteActivityConstantes.CHAVE_PACOTE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,29 +25,37 @@ public class PagamentoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_pagamento);
 
         setTitle(TITULO_APPBAR);
 
         Intent intent = getIntent();
-        if (intent.hasExtra("pacote")){
-            final Pacote pacote = (Pacote) intent.getSerializableExtra("pacote");
+        carregaPacoteRecebido(intent);
 
+    }
+
+    private void carregaPacoteRecebido(Intent intent) {
+        if (intent.hasExtra(CHAVE_PACOTE)){
+            final Pacote pacote = (Pacote) intent.getSerializableExtra(CHAVE_PACOTE);
             mostraPreco(pacote);
-
-            Button botaoFinalizaCompra = findViewById(R.id.pagamento_botao_finaliza_compra);
-            botaoFinalizaCompra.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(PagamentoActivity.this, ResumoCompraActivity.class);
-                    intent.putExtra("pacote", pacote);
-                    startActivity(intent);
-                }
-            });
+            configuraBotao(pacote);
         }
+    }
 
+    private void configuraBotao(Pacote pacote) {
+        Button botaoFinalizaCompra = findViewById(R.id.pagamento_botao_finaliza_compra);
+        botaoFinalizaCompra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vaiParaResumoCompra(pacote);
+            }
+        });
+    }
 
+    private void vaiParaResumoCompra(Pacote pacote) {
+        Intent intent = new Intent(PagamentoActivity.this, ResumoCompraActivity.class);
+        intent.putExtra(CHAVE_PACOTE, pacote);
+        startActivity(intent);
     }
 
     private void mostraPreco(Pacote pacote) {

@@ -1,5 +1,7 @@
 package com.gustavo.appviagens.ui.activity;
 
+import static com.gustavo.appviagens.ui.activity.PacoteActivityConstantes.CHAVE_PACOTE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,15 +21,13 @@ public class ListaPacotesActivity extends AppCompatActivity {
 
     public static final String TUTULO_APP_BAR = "Pacotes";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_pacotes);
-
         setTitle(TUTULO_APP_BAR);
-
         ConfiguraLista();
-
     }
 
     private void ConfiguraLista() {
@@ -38,10 +38,14 @@ public class ListaPacotesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
                 Pacote pacoteClicado = pacotes.get(posicao);
-                Intent intent = new Intent(ListaPacotesActivity.this, ResumoPacoteActivity.class);
-                intent.putExtra("pacote", pacoteClicado);
-                startActivity(intent);
+                vaiParaReumoPacote(pacoteClicado);
             }
         });
+    }
+
+    private void vaiParaReumoPacote(Pacote pacoteClicado) {
+        Intent intent = new Intent(ListaPacotesActivity.this, ResumoPacoteActivity.class);
+        intent.putExtra(CHAVE_PACOTE, pacoteClicado);
+        startActivity(intent);
     }
 }

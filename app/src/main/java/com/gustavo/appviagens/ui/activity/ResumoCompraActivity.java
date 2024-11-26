@@ -1,5 +1,7 @@
 package com.gustavo.appviagens.ui.activity;
 
+import static com.gustavo.appviagens.ui.activity.PacoteActivityConstantes.CHAVE_PACOTE;
+
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -24,21 +26,24 @@ public class ResumoCompraActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_resumo_compra);
-
         setTitle(TITLE_APPBAR);
+        carregaPacoteRecebido();
+    }
 
+    private void carregaPacoteRecebido() {
         Intent intent = getIntent();
-        if (intent.hasExtra("pacote")){
-            Pacote pacote = (Pacote) intent.getSerializableExtra("pacote");
-            mostraLocal(pacote);
-            mostraData(pacote);
-            mostraValor(pacote);
-            mostraImagem(pacote);
-
+        if (intent.hasExtra(CHAVE_PACOTE)){
+            Pacote pacote = (Pacote) intent.getSerializableExtra(CHAVE_PACOTE);
+            inicializaCampos(pacote);
         }
+    }
 
+    private void inicializaCampos(Pacote pacote) {
+        mostraLocal(pacote);
+        mostraData(pacote);
+        mostraValor(pacote);
+        mostraImagem(pacote);
     }
 
     private void mostraImagem(Pacote pacote) {
