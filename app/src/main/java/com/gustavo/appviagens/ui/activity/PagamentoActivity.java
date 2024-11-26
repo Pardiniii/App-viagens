@@ -13,6 +13,7 @@ import com.gustavo.appviagens.R;
 import com.gustavo.appviagens.model.Pacote;
 import com.gustavo.appviagens.util.MoedaUtil;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class PagamentoActivity extends AppCompatActivity {
@@ -27,18 +28,23 @@ public class PagamentoActivity extends AppCompatActivity {
 
         setTitle(TITULO_APPBAR);
 
-        Pacote pacote = new Pacote("São Paulo", "sao_paulo_sp", 2, new BigDecimal("243.99"));
+        Intent intent = getIntent();
+        if (intent.hasExtra("pacote")){
+            final Pacote pacote = (Pacote) intent.getSerializableExtra("pacote");
 
-        mostraPreco(pacote);
+            mostraPreco(pacote);
 
-        Button botaoFinalizaCompra = findViewById(R.id.pagamento_botao_finaliza_compra);
-        botaoFinalizaCompra.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PagamentoActivity.this, ResumoCompraActivity.class);
-                startActivity(intent);
-            }
-        });
+            Button botaoFinalizaCompra = findViewById(R.id.pagamento_botao_finaliza_compra);
+            botaoFinalizaCompra.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(PagamentoActivity.this, ResumoCompraActivity.class);
+                    intent.putExtra("pacote", pacote);
+                    startActivity(intent);
+                }
+            });
+        }
+
 
     }
 
